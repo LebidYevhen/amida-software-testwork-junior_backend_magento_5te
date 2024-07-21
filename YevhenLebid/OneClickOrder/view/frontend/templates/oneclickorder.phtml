@@ -1,0 +1,29 @@
+<style>
+    .one-click-order {
+        position: fixed;
+        right: 15px;
+        bottom: 15px;
+    }
+
+    .one-click-order button.primary {
+        line-height: 2.2rem;
+        padding: 14px 17px;
+        font-size: 1.8rem;
+    }
+</style>
+
+<?php
+  $url = $block->getUrl('yevhenlebid_oneclickorder/index/index');
+  $objectManager = \Magento\Framework\App\ObjectManager::getInstance();
+  $product = $objectManager->get('Magento\Framework\Registry')->registry('current_product');
+?>
+
+<div class="one-click-order" data-mage-init='{
+    "oneclickorder": {
+      "url": "<?php echo $url; ?>",
+      "product_id": "<?php echo $product->getId(); ?>",
+      "product_sku": "<?php echo $product->getSku(); ?>"
+    }
+  }'>
+    <button class="action primary">One Click Order</button>
+</div>
